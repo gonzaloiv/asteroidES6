@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 
-export class Asteroid extends Phaser.Sprite {
+class Asteroid extends Phaser.Sprite {
 
   constructor({ game, x, y, asset }) {
     super(game, x, y, asset)
@@ -14,3 +14,5 @@ export class Asteroid extends Phaser.Sprite {
   }
 
 }
+
+export default Asteroid
