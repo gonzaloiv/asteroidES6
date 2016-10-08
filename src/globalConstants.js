@@ -12,7 +12,7 @@ export const shipProperties = {
   maxVelocity: 300,
   angularVelocity: 200,
   startingLives: 3,
-  timeToReset: 3,
+  timeToReset: 1,
   blinkDelay: 0.2
 }
 

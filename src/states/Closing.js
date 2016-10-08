@@ -1,15 +1,15 @@
 import Phaser from 'phaser'
-import * as globalConstants from '../globalConstants'
+import * as GLOBAL_CONSTANTS from '../globalConstants'
 
 export default class extends Phaser.State {
 
   create() {
-    this.tf_score = game.add.text(
-      globalConstants.gameProperties.screenWidth / 2,
-      globalConstants.gameProperties.screenWidth / 2,
+    this.game.add.text(
+      GLOBAL_CONSTANTS.gameProperties.screenWidth / 2.6,
+      GLOBAL_CONSTANTS.gameProperties.screenHeight / 2,
       "GAME OVER",
-      globalConstants.fontProperties.counterFontStyle
-    );
+      GLOBAL_CONSTANTS.fontProperties.counterFontStyle
+    )
   }
 
 }

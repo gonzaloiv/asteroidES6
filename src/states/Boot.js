@@ -1,3 +1,4 @@
+// Globals
 import Phaser from 'phaser'
 import * as assets from '../Assets'
 
@@ -15,7 +16,7 @@ export default class extends Phaser.State {
     this.game.load.audio(assets.soundAssets.fire.name, assets.soundAssets.fire.URL)
   }
 
-  render() {
+  create() {
     this.state.start('Play')
   }
 

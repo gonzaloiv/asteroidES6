@@ -8,10 +8,8 @@ class Ship extends Phaser.Sprite {
   constructor(game, x, y) {
     super(game, x, y, 'ship')
 
-    this.game = game
-
     this.anchor.setTo(0.5)
-    this.angle = -90;
+    this.angle = -90
 
     this.game.physics.enable(this, Phaser.Physics.ARCADE)
     this.body.drag.set(GLOBAL_CONSTANTS.shipProperties.drag)
@@ -20,16 +18,10 @@ class Ship extends Phaser.Sprite {
     this.bulletGroup = new BulletGroup(this.game)
     this.bulletInterval = 0
 
-    this.shipLives = GLOBAL_CONSTANTS.shipProperties.startingLives
+    this.lives = GLOBAL_CONSTANTS.shipProperties.startingLives
     this.isInvulnerable = false
 
-    this.soundFire = game.add.audio(GLOBAL_CONSTANTS.soundAssets.fire.name)
-  }
-
-  update() {
-    if (!this.shipIsInvulnerable) {
-      game.physics.arcade.overlap(this.shipSprite, this.asteroidGroup, this.asteroidCollision, null, this)
-    }
+    this.soundFire = game.add.audio('fire')
   }
 
   fire() {
@@ -53,29 +45,33 @@ class Ship extends Phaser.Sprite {
     }
   }
 
-  reset() {
-    this.isInvulnerable = true
-    this.reset(GLOBAL_CONSTANTS.shipProperties.startX, GLOBAL_CONSTANTS.shipProperties.startY)
-    this.angle = 90
-
-    this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this.shipReady, this)
-    this.game.time.events.repeat(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.blinkDelay, GLOBAL_CONSTANTS.shipProperties.timeToReset / GLOBAL_CONSTANTS.shipProperties.blinkDelay, this.shipBlink, this)
+  destroy() {
+    this.lives--
+      if (this.lives > 0) {
+        this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this.resetShip, this)
+      } else {
+        this.game.state.start('Closing')
+      }
   }
 
   // ################################################
   // PRIVATE METHODS
   // ################################################
+  resetShip() {
+    this.isInvulnerable = true
+    this.reset(GLOBAL_CONSTANTS.shipProperties.startX, GLOBAL_CONSTANTS.shipProperties.startY)
+
+    this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this.getReady, this)
+    this.game.time.events.repeat(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.blinkDelay, GLOBAL_CONSTANTS.shipProperties.timeToReset / GLOBAL_CONSTANTS.shipProperties.blinkDelay, this.blink, this)
+  }
+
   blink() {
     this.visible = !this.visible
   }
 
-  shipReady() {
+  getReady() {
     this.isInvulnerable = false;
     this.visible = true;
-  }
-
-  shipBlink() {
-    this.visible = !this.visible;
   }
 
 }

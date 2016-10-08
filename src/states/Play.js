@@ -1,12 +1,16 @@
+// Globals
 import Phaser from 'phaser'
 import * as GLOBAL_CONSTANTS from '../GlobalConstants'
 
 // Entities
 import Ship from '../entities/Ship'
+import AsteroidGroup from '../entities/AsteroidGroup'
 
 // Managers
-import InputManager from '../managers/inputManager'
-import CollisionManager from '../managers/collisionManager'
+import CollisionManager from '../managers/CollisionManager'
+import GuiManager from '../managers/GuiManager'
+import InputManager from '../managers/InputManager'
+import WaveManager from '../managers/WaveManager'
 
 export default class extends Phaser.State {
 
@@ -21,24 +25,19 @@ export default class extends Phaser.State {
 
     this.game.asteroidGroup = new AsteroidGroup(this.game)
 
-    this.game.inputManager = new InputManager(this.game)
     this.game.collisionManager = new CollisionManager(this.game)
+    this.game.guiManager = new GuiManager(this.game)
+    this.game.inputManager = new InputManager(this.game)
+    this.game.waveManager = new WaveManager(this.game)
+
+    this.game.camera.follow(this.game.ship)
   }
 
   update() {
-    this.game.inputManager.update()
     this.game.collisionManager.update()
-
-    // ################################################
-    // CAMERA NOT WORKING
-    // ################################################
-    // this.game.world.setBounds(
-    //   this.game.ship.x - GLOBAL_CONSTANTS.gameProperties.screenWidth / 2,
-    //   this.game.ship.y - GLOBAL_CONSTANTS.gameProperties.screenHeight / 2,
-    //   this.game.ship.x + GLOBAL_CONSTANTS.gameProperties.screenWidth / 2,
-    //   this.game.ship.y + GLOBAL_CONSTANTS.gameProperties.screenHeight / 2
-    // )
-    // this.game.camera.focusOnXY(this.game.ship.x, this.game.ship.y)
+    this.game.guiManager.update()
+    this.game.inputManager.update()
+    this.game.waveManager.update()
   }
 
   render() {

@@ -5,11 +5,17 @@ class WaveManager {
 
   constructor(game) {
     this.game = game
-
+    this.game.asteroidGroup.reset()
   }
 
-  update() {
+  update()  {}
 
+  nextLevel() {
+    this.game.asteroidGroup.removeAll(true)
+    if (this.game.asteroidsCount < GLOBAL_CONSTANTS.asteroidProperties.maxAsteroids)  {
+      this.asteroidGroup.asteroidsCount += GLOBAL_CONSTANTS.asteroidsProperties.incrementAsteroids
+    }
+    this.game.asteroidGroup.reset()
   }
 
 }
