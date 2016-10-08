@@ -3,12 +3,12 @@ import 'p2'
 import Phaser from 'phaser'
 
 import * as states from './states'
-import * as globalConstants from './globalConstants.js'
+import * as globalConstants from './GlobalConstants.js'
 
 class Game extends Phaser.Game {
 
   constructor() {
-    super(globalConstants.screenWidth, globalConstants.screenHeight, Phaser.AUTO, 'content', null)
+    super(globalConstants.gameProperties.screenWidth, globalConstants.gameProperties.screenHeight, Phaser.CANVAS, 'content', null)
     Object.keys(states).forEach(state => this.state.add(state, states[state]));
     this.state.start('Boot')
   }

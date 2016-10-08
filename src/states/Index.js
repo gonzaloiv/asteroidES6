@@ -1,12 +1,16 @@
 export {
-  default as Boot }
+  default as Boot
+}
 from './Boot'
 export {
-  default as MainMenu }
-from './MainMenu'
+  default as Opening
+}
+from './Opening'
 export {
-  default as Play }
+  default as Play
+}
 from './Play'
 export {
-  default as Over }
-from './GameOver'
+  default as Closing
+}
+from './Closing'

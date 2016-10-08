@@ -16,3 +16,4 @@ class Asteroid extends Phaser.Sprite {
 }
 
 export default Asteroid
+

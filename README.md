@@ -10,10 +10,6 @@
 - JavaScript Standard Style
 - Next generation of Javascript
 - Webpack ready
-- Multiple browser testing
-- WebFont Loader
-- Responsive utilities!
-
 
 # Setup
 To use this bootstrap you’ll need to install a few things before you have a working copy of the project.

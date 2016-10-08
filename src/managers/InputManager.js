@@ -1,15 +1,34 @@
 import Phaser from 'phaser'
+import * as globalConstants from '../GlobalConstants'
 
 class InputManager {
 
   constructor(game) {
     this.game = game
-    console.log(this.game.ship)
+
+    this.key_left = this.game.input.keyboard.addKey(Phaser.Keyboard.LEFT)
+    this.key_right = this.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT)
+    this.key_thrust = this.game.input.keyboard.addKey(Phaser.Keyboard.UP)
+    this.key_fire = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
   }
 
   update() {
-    if (this.game.key_thrust.isDown) {
-      this.game.ship.x++;
+    if (this.key_left.isDown) {
+      this.game.ship.body.angularVelocity = -globalConstants.shipProperties.angularVelocity;
+    } else if (this.key_right.isDown) {
+      this.game.ship.body.angularVelocity = globalConstants.shipProperties.angularVelocity;
+    } else {
+      this.game.ship.body.angularVelocity = 0;
+    }
+
+    if (this.key_thrust.isDown) {
+      game.physics.arcade.accelerationFromRotation(this.game.ship.rotation, globalConstants.shipProperties.acceleration, this.game.ship.body.acceleration);
+    } else {
+      this.game.ship.body.acceleration.set(0);
+    }
+
+    if (this.key_fire.isDown) {
+      this.game.ship.fire();
     }
   }
 
