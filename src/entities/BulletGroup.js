@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import * as globalConstants from '../GlobalConstants'
+import * as GLOBAL_CONSTANTS from '../GlobalConstants'
 
 class BulletGroup extends Phaser.Group {
 
@@ -8,10 +8,10 @@ class BulletGroup extends Phaser.Group {
 
     this.enableBody = true
     this.physicsBodyType = Phaser.Physics.ARCADE
-    this.createMultiple(globalConstants.bulletProperties.maxCount, 'bullet')
+    this.createMultiple(GLOBAL_CONSTANTS.bulletProperties.maxCount, 'bullet')
     this.setAll('anchor.x', 0.5)
     this.setAll('anchor.y', 0.5);
-    this.setAll('lifespan', globalConstants.bulletProperties.lifespan);
+    this.setAll('lifespan', GLOBAL_CONSTANTS.bulletProperties.lifespan);
   }
 
 }

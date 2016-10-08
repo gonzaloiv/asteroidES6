@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import * as globalConstants from '../GlobalConstants'
+import * as GLOBAL_CONSTANTS from '../GlobalConstants'
 
 class InputManager {
 
@@ -14,21 +14,21 @@ class InputManager {
 
   update() {
     if (this.key_left.isDown) {
-      this.game.ship.body.angularVelocity = -globalConstants.shipProperties.angularVelocity;
+      this.game.ship.body.angularVelocity = -GLOBAL_CONSTANTS.shipProperties.angularVelocity
     } else if (this.key_right.isDown) {
-      this.game.ship.body.angularVelocity = globalConstants.shipProperties.angularVelocity;
+      this.game.ship.body.angularVelocity = GLOBAL_CONSTANTS.shipProperties.angularVelocity
     } else {
-      this.game.ship.body.angularVelocity = 0;
+      this.game.ship.body.angularVelocity = 0
     }
 
     if (this.key_thrust.isDown) {
-      game.physics.arcade.accelerationFromRotation(this.game.ship.rotation, globalConstants.shipProperties.acceleration, this.game.ship.body.acceleration);
+      game.physics.arcade.accelerationFromRotation(this.game.ship.rotation, GLOBAL_CONSTANTS.shipProperties.acceleration, this.game.ship.body.acceleration)
     } else {
-      this.game.ship.body.acceleration.set(0);
+      this.game.ship.body.acceleration.set(0)
     }
 
     if (this.key_fire.isDown) {
-      this.game.ship.fire();
+      this.game.ship.fire()
     }
   }
 

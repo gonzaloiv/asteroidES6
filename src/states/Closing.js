@@ -10,6 +10,13 @@ export default class extends Phaser.State {
       "GAME OVER",
       GLOBAL_CONSTANTS.fontProperties.counterFontStyle
     )
+    this.key_restart = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+  }
+
+  update() {
+    if (this.key_restart.isDown) {
+      this.state.start('Play')
+    }
   }
 
 }

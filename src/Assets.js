@@ -5,6 +5,8 @@ export const graphicAssets = {
   asteroidLarge: { URL: 'assets/sprites/asteroidLarge.png', name: 'asteroidLarge' },
   asteroidMedium: { URL: 'assets/sprites/asteroidMedium.png', name: 'asteroidMedium' },
   asteroidSmall: { URL: 'assets/sprites/asteroidSmall.png', name: 'asteroidSmall' },
+
+  opening: { URL: 'assets/sprites/opening.png', name: 'opening' }
 }
 
 export const soundAssets = {
