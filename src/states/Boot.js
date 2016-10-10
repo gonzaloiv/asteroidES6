@@ -2,7 +2,7 @@
 import Phaser from 'phaser'
 import * as assets from '../Assets'
 
-export default class extends Phaser.State {
+class Boot extends Phaser.State {
 
   preload() {
     this.game.load.image(assets.graphicAssets.asteroidLarge.name, assets.graphicAssets.asteroidLarge.URL)
@@ -23,3 +23,5 @@ export default class extends Phaser.State {
   }
 
 }
+
+export default Boot

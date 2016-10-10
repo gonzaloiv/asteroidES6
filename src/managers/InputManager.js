@@ -27,7 +27,7 @@ class InputManager {
       this.game.ship.body.acceleration.set(0)
     }
 
-    if (this.key_fire.isDown) {
+    if (this.key_fire.isDown && !this.game.ship.isInvulnerable) {
       this.game.ship.fire()
     }
   }

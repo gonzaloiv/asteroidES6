@@ -1,21 +1,21 @@
 import Phaser from 'phaser'
 import * as GLOBAL_CONSTANTS from '../globalConstants'
 
-export default class extends Phaser.State {
+class Opening extends Phaser.State {
 
   create() {
-    this.game.add.image(
-      GLOBAL_CONSTANTS.gameProperties.screenWidth / 2.5,
-      GLOBAL_CONSTANTS.gameProperties.screenHeight / 3.5,
+    var logo = this.game.add.image(
+      GLOBAL_CONSTANTS.gameProperties.screenWidth / 2.6,
+      GLOBAL_CONSTANTS.gameProperties.screenHeight / 2.4,
       'opening',
       0.5
     )
-    this.game.add.text(
-      GLOBAL_CONSTANTS.gameProperties.screenWidth / 3.8,
-      GLOBAL_CONSTANTS.gameProperties.screenHeight / 1.8,
-      "PRESS SPACEBAR TO START",
-      GLOBAL_CONSTANTS.fontProperties.counterFontStyle
-    )
+    // this.game.add.text(
+    //   GLOBAL_CONSTANTS.gameProperties.screenWidth / 3.8,
+    //   GLOBAL_CONSTANTS.gameProperties.screenHeight / 1.8,
+    //   "PRESS SPACEBAR TO START",
+    //   GLOBAL_CONSTANTS.fontProperties.counterFontStyle
+    // )
     this.key_start = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
   }
 
@@ -26,3 +26,5 @@ export default class extends Phaser.State {
   }
 
 }
+
+export default Opening

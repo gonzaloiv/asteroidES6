@@ -8,8 +8,6 @@ class WaveManager {
     this.game.asteroidGroup.reset()
   }
 
-  update()  {}
-
   nextLevel() {
     this.game.asteroidGroup.removeAll(true)
     if (this.game.asteroidsCount < GLOBAL_CONSTANTS.asteroidProperties.maxAsteroids)  {

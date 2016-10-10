@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import * as GLOBAL_CONSTANTS from '../globalConstants'
 
-export default class extends Phaser.State {
+class Closing extends Phaser.State {
 
   create() {
     this.game.add.text(
@@ -20,3 +20,5 @@ export default class extends Phaser.State {
   }
 
 }
+
+export default Closing

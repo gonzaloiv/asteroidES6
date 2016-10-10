@@ -11,7 +11,7 @@ class BulletGroup extends Phaser.Group {
     this.createMultiple(GLOBAL_CONSTANTS.bulletProperties.maxCount, 'bullet')
     this.setAll('anchor.x', 0.5)
     this.setAll('anchor.y', 0.5);
-    this.setAll('lifespan', GLOBAL_CONSTANTS.bulletProperties.lifespan);
+    this.setAll('lifespan', GLOBAL_CONSTANTS.bulletProperties.lifespan)
   }
 
 }

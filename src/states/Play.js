@@ -12,13 +12,15 @@ import GuiManager from '../managers/GuiManager'
 import InputManager from '../managers/InputManager'
 import WaveManager from '../managers/WaveManager'
 
-export default class extends Phaser.State {
+class Play extends Phaser.State {
 
   create() {
     this.stage.backgroundColor = '#111'
     this.game.physics.startSystem(Phaser.Physics.ARCADE)
 
     this.game.score = 0
+
+    // this.game.background = this.game.add.tileSprite(0, 0, GLOBAL_CONSTANTS.gameProperties.screenWidth, GLOBAL_CONSTANTS.gameProperties.screenHeight, 'background')
 
     this.game.ship = new Ship(this.game, GLOBAL_CONSTANTS.shipProperties.startX, GLOBAL_CONSTANTS.shipProperties.startY)
     this.game.add.existing(this.game.ship)
@@ -29,8 +31,6 @@ export default class extends Phaser.State {
     this.game.guiManager = new GuiManager(this.game)
     this.game.inputManager = new InputManager(this.game)
     this.game.waveManager = new WaveManager(this.game)
-
-    this.game.camera.follow(this.game.ship)
   }
 
   update() {
@@ -42,7 +42,9 @@ export default class extends Phaser.State {
 
   render() {
     this.game.debug.cameraInfo(this.game.camera, 32, 32)
-    this.game.debug.spriteCoords(this.game.ship, 32, 500)
+    // this.game.debug.spriteCoords(this.game.ship, 32, 500)
   }
 
 }
+
+export default Play
