@@ -1,2 +1,2 @@
 # AsteroidES6
-#### Versión del clásico asteroides en ES6 + Phaser + Webpack
+#### Versión del clásico Asteroids en ES6 + Phaser + Webpack
