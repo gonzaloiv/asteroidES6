@@ -18,13 +18,13 @@ export const shipProperties = {
 
 export const bulletProperties = {
   speed: 400,
-  interval: 250,
+  interval: 100,
   lifespan: 2000,
   maxCount: 30
 }
 
 export const asteroidProperties = {
-  startingAsteroids: 1,
+  startingAsteroids: 3,
   maxAsteroids: 20,
   incrementAsteroids: 2,
 

@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import * as GLOBAL_CONSTANTS from '../GlobalConstants'
 
-// Childs
+// Child
 import Asteroid from './Asteroid'
 
 class AsteroidGroup extends Phaser.Group {
@@ -16,13 +16,11 @@ class AsteroidGroup extends Phaser.Group {
 
   update() {}
 
-  reset() {
+  create() {
     for (let i = 0; i < this.asteroidsCount; i++) {
-      let side = Math.round(Math.random())
       let x
       let y
-
-      if (side) {
+      if (Math.round(Math.random())) {
         x = Math.round(Math.random()) * GLOBAL_CONSTANTS.gameProperties.screenWidth
         y = Math.random() * GLOBAL_CONSTANTS.gameProperties.screenHeight
       } else {

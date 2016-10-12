@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import * as GLOBAL_CONSTANTS from '../globalConstants'
+import * as GLOBAL_CONSTANTS from '../GlobalConstants'
 
 class Closing extends Phaser.State {
 

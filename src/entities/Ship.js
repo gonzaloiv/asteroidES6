@@ -7,6 +7,7 @@ class Ship extends Phaser.Sprite {
 
   constructor(game, x, y) {
     super(game, x, y, 'ship')
+    this.game = game
 
     this.anchor.setTo(0.5)
     this.angle = -90
@@ -16,16 +17,17 @@ class Ship extends Phaser.Sprite {
     this.body.maxVelocity.set(GLOBAL_CONSTANTS.shipProperties.maxVelocity)
 
     this.bulletGroup = new BulletGroup(this.game)
-    this.bulletInterval = 0
 
     this.lives = GLOBAL_CONSTANTS.shipProperties.startingLives
     this.isInvulnerable = false
 
-    this.soundFire = game.add.audio('fire')
+    this.soundFire = this.game.add.audio('fire')
+
+    this.game.add.existing(this)
   }
 
   fire() {
-    if (this.game.time.now > this.bulletInterval) {
+    if (this.game.time.now > this.bulletGroup.bulletInterval) {
       this.soundFire.play()
 
       var bullet = this.bulletGroup.getFirstExists(false)
@@ -40,19 +42,15 @@ class Ship extends Phaser.Sprite {
         bullet.rotation = this.rotation
 
         this.game.physics.arcade.velocityFromRotation(this.rotation, GLOBAL_CONSTANTS.bulletProperties.speed, bullet.body.velocity)
-        this.bulletInterval = game.time.now + GLOBAL_CONSTANTS.bulletProperties.interval
+        this.bulletGroup.bulletInterval = game.time.now + GLOBAL_CONSTANTS.bulletProperties.interval
       }
     }
   }
 
   destroy() {
     this.lives--
-      if (this.lives > 0) {
-        this.isInvulnerable = true
-        this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this._resetShip, this)
-      } else {
-        this.game.state.start('Closing')
-      }
+      this.isInvulnerable = true
+    this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this._resetShip, this)
   }
 
   _resetShip() {

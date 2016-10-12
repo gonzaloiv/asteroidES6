@@ -23,11 +23,16 @@ class Asteroid extends Phaser.Sprite {
 
   split() {
     this.soundDestroyed.play()
+    this.kill()
     if (GLOBAL_CONSTANTS.asteroidProperties[this.size].nextSize) {
       for (let i = 0; i < GLOBAL_CONSTANTS.asteroidProperties[this.size].pieces; i++) {
         this.game.asteroidGroup.add(new Asteroid(this.game, this.x, this.y, GLOBAL_CONSTANTS.asteroidProperties[this.size].nextSize))
       }
     }
+  }
+
+  move(xAcceleration, yAcceleration) {
+    this.game.physics.arcade.accelerationFromRotation(this, xAcceleration, yAcceleration)
   }
 
 }

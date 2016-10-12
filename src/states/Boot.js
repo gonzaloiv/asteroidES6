@@ -1,5 +1,6 @@
 // Globals
 import Phaser from 'phaser'
+import * as GLOBAL_CONSTANTS from '../GlobalConstants'
 import * as assets from '../Assets'
 
 class Boot extends Phaser.State {
@@ -19,6 +20,8 @@ class Boot extends Phaser.State {
   }
 
   create() {
+    // this.stage.backgroundColor = '#111'
+    this.game.background = this.game.add.tileSprite(0, 0, GLOBAL_CONSTANTS.gameProperties.screenWidth, GLOBAL_CONSTANTS.gameProperties.screenHeight, 'background')
     this.state.start('Opening')
   }
 

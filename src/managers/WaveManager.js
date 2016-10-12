@@ -5,21 +5,19 @@ class WaveManager {
 
   constructor(game) {
     this.game = game
-    this.game.asteroidGroup.reset()
+    this.game.asteroidGroup.create()
   }
 
-  checkLevel() {
-    if (!this.game.asteroidGroup.countLiving()) {
-      this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.gameProperties.delayToStartLevel, this._nextLevel, this)
-    }
+  nextLevel() {
+    this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.gameProperties.delayToStartLevel, this._setNewLevel, this)
+    this.game.levelFinished = false
   }
 
-  _nextLevel() {
+  _setNewLevel() {
     this.game.asteroidGroup.removeAll(true)
-    if (this.game.asteroidGroup.asteroidsCount < GLOBAL_CONSTANTS.asteroidProperties.maxAsteroids)  {
+    if (this.game.asteroidGroup.asteroidsCount < GLOBAL_CONSTANTS.asteroidProperties.maxAsteroids)
       this.game.asteroidGroup.asteroidsCount += GLOBAL_CONSTANTS.asteroidProperties.incrementAsteroids
-    }
-    this.game.asteroidGroup.reset()
+    this.game.asteroidGroup.create()
   }
 
 }
