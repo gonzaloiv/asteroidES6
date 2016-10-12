@@ -47,30 +47,27 @@ class Ship extends Phaser.Sprite {
 
   destroy() {
     this.lives--
-    if (this.lives > 0) {
-      this.isInvulnerable = true
-      this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this.resetShip, this)
-    } else {
-      this.game.state.start('Closing')
-    }
+      if (this.lives > 0) {
+        this.isInvulnerable = true
+        this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this._resetShip, this)
+      } else {
+        this.game.state.start('Closing')
+      }
   }
 
-  // ################################################
-  // PRIVATE METHODS
-  // ################################################
-  resetShip() {
+  _resetShip() {
     this.reset(GLOBAL_CONSTANTS.shipProperties.startX, GLOBAL_CONSTANTS.shipProperties.startY)
-    this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this.getReady, this)
-    this.game.time.events.repeat(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.blinkDelay, GLOBAL_CONSTANTS.shipProperties.timeToReset / GLOBAL_CONSTANTS.shipProperties.blinkDelay, this.blink, this)
+    this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.timeToReset, this._getReady, this)
+    this.game.time.events.repeat(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.shipProperties.blinkDelay, GLOBAL_CONSTANTS.shipProperties.timeToReset / GLOBAL_CONSTANTS.shipProperties.blinkDelay, this._blink, this)
   }
 
-  blink() {
+  _blink() {
     this.visible = !this.visible
   }
 
-  getReady() {
-    this.isInvulnerable = false;
-    this.visible = true;
+  _getReady() {
+    this.isInvulnerable = false
+    this.visible = true
   }
 
 }

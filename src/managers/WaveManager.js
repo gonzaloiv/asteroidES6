@@ -8,10 +8,16 @@ class WaveManager {
     this.game.asteroidGroup.reset()
   }
 
-  nextLevel() {
+  checkLevel() {
+    if (!this.game.asteroidGroup.countLiving()) {
+      this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.gameProperties.delayToStartLevel, this._nextLevel, this)
+    }
+  }
+
+  _nextLevel() {
     this.game.asteroidGroup.removeAll(true)
-    if (this.game.asteroidsCount < GLOBAL_CONSTANTS.asteroidProperties.maxAsteroids)  {
-      this.asteroidGroup.asteroidsCount += GLOBAL_CONSTANTS.asteroidsProperties.incrementAsteroids
+    if (this.game.asteroidGroup.asteroidsCount < GLOBAL_CONSTANTS.asteroidProperties.maxAsteroids)  {
+      this.game.asteroidGroup.asteroidsCount += GLOBAL_CONSTANTS.asteroidProperties.incrementAsteroids
     }
     this.game.asteroidGroup.reset()
   }

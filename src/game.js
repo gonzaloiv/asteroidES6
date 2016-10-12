@@ -9,7 +9,7 @@ class Game extends Phaser.Game {
 
   constructor() {
     super(GLOBAL_CONSTANTS.gameProperties.screenWidth, GLOBAL_CONSTANTS.gameProperties.screenHeight, Phaser.CANVAS, 'content', null)
-    Object.keys(states).forEach(state => this.state.add(state, states[state]));
+    Object.keys(states).forEach(state => this.state.add(state, states[state]))
     this.state.start('Boot')
   }
 }

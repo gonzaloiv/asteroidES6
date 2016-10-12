@@ -24,7 +24,7 @@ export const bulletProperties = {
 }
 
 export const asteroidProperties = {
-  startingAsteroids: 4,
+  startingAsteroids: 1,
   maxAsteroids: 20,
   incrementAsteroids: 2,
 

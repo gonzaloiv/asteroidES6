@@ -16,11 +16,11 @@ class Play extends Phaser.State {
 
   create() {
     this.stage.backgroundColor = '#111'
+      // this.game.background = this.game.add.tileSprite(0, 0, GLOBAL_CONSTANTS.gameProperties.screenWidth, GLOBAL_CONSTANTS.gameProperties.screenHeight, 'background')
+
     this.game.physics.startSystem(Phaser.Physics.ARCADE)
 
     this.game.score = 0
-
-    // this.game.background = this.game.add.tileSprite(0, 0, GLOBAL_CONSTANTS.gameProperties.screenWidth, GLOBAL_CONSTANTS.gameProperties.screenHeight, 'background')
 
     this.game.ship = new Ship(this.game, GLOBAL_CONSTANTS.shipProperties.startX, GLOBAL_CONSTANTS.shipProperties.startY)
     this.game.add.existing(this.game.ship)
@@ -37,12 +37,12 @@ class Play extends Phaser.State {
     this.game.collisionManager.update()
     this.game.guiManager.update()
     this.game.inputManager.update()
-    this.game.waveManager.update()
+      // this.game.waveManager.update()
   }
 
   render() {
-    this.game.debug.cameraInfo(this.game.camera, 32, 32)
-    // this.game.debug.spriteCoords(this.game.ship, 32, 500)
+    // this.game.debug.cameraInfo(this.game.camera, 32, 32)
+    this.game.debug.spriteCoords(this.game.ship, 32, 500)
   }
 
 }

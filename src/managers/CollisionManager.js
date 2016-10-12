@@ -41,19 +41,15 @@ class CollisionManager {
       this.game.ship.destroy()
     }
 
-    this.game.asteroidGroup.splitAsteroid(asteroid)
-    this.updateScore(GLOBAL_CONSTANTS.asteroidProperties[asteroid.key].score)
+    asteroid.split()
 
-    if (!this.game.asteroidGroup.countLiving()) {
-      this.game.time.events.add(Phaser.Timer.SECOND * GLOBAL_CONSTANTS.gameProperties.delayToStartLevel, this.game.waveManager.nextLevel(), this)
-    }
+    this.game.waveManager.checkLevel()
+
+    this._updateScore(GLOBAL_CONSTANTS.asteroidProperties[asteroid.key].score)
   }
 
-  // ################################################
-  // PRIVATE METHODS
-  // ################################################
-  updateScore(score) {
-    this.game.score += score;
+  _updateScore(score) {
+    this.game.score += score
   }
 
 }
