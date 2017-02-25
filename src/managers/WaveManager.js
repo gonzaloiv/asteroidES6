@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import * as GLOBAL_CONSTANTS from '../GlobalConstants'
+import * as GLOBAL_CONSTANTS from '../globalConstants'
 
 class WaveManager {
 

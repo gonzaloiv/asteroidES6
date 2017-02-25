@@ -1,6 +1,6 @@
 // Globals
 import Phaser from 'phaser'
-import * as GLOBAL_CONSTANTS from '../GlobalConstants'
+import * as GLOBAL_CONSTANTS from '../globalConstants'
 import * as assets from '../Assets'
 
 class Boot extends Phaser.State {
