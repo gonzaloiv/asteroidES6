@@ -1,9 +1,9 @@
-import 'pixi'
-import 'p2'
-import Phaser from 'phaser'
+import 'pixi';
+import 'p2';
+import Phaser from 'phaser';
 
-import * as states from './states'
-import * as GLOBAL_CONSTANTS from './GlobalConstants.js'
+import * as states from './states';
+import * as GLOBAL_CONSTANTS from './globalConstants';
 
 class Game extends Phaser.Game {
 

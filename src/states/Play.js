@@ -1,6 +1,6 @@
 // Globals
 import Phaser from 'phaser'
-import * as GLOBAL_CONSTANTS from '../GlobalConstants'
+import * as GLOBAL_CONSTANTS from '../globalConstants'
 
 // Entities
 import Ship from '../entities/Ship'
@@ -8,7 +8,7 @@ import AsteroidGroup from '../entities/AsteroidGroup'
 
 // Managers
 import CollisionManager from '../managers/CollisionManager'
-import GUIManager from '../managers/GUIManager'
+import GUIManager from '../managers/GuiManager'
 import InputManager from '../managers/InputManager'
 import WaveManager from '../managers/WaveManager'
 
